@@ -28,7 +28,7 @@ void heap_push(Heap* pq, void* data, int priority){
     pq->capac = (pq->capac)*2+1;
     pq->heapArray = realloc(pq->heapArray,(pq->capac)*sizeof(heapElem));
   }
-  
+
   int actual = pq->size;
   while(actual>0 && pq->heapArray[(actual-1)/2].priority < priority){
     pq -> heapArray[actual] = pq ->heapArray[(actual-1)/2];
@@ -48,6 +48,8 @@ void heap_pop(Heap* pq){
 }
 
 Heap* createHeap(){
-
-   return NULL;
+  Heap* pq =  (Heap*)malloc(sizeof(Heap));
+  pq->size = 0;
+  pq->capac = 3;
+  return pq;
 }
